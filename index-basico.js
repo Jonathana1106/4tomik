@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let id  = 1;
 
     /**
-     * Hacer la variable cont no permite modificarla, si necesitara
+     * Hacer la variable const no permite modificarla, si necesitara
      * modificarla es mejor usar let
     */
     const btn = document.getElementById('add');
