@@ -11,9 +11,9 @@ jobs:
       Solution_Name: GitHubActions\GitHubActions.sln
 
     steps:
-      - name: Dummy
-        run:
-          whoami
+      # - name: Dummy
+      #   run:
+      #     whoami
       
       - name: Checkout
         uses: actions/checkout@v3
