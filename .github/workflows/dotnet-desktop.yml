@@ -5,7 +5,9 @@ on:
 
 jobs:
   Desktop-App-Runner:
-    runs-on: self-hosted
+    runs-on: 
+      - self-hosted
+      - vs-test-work
 
     env:
       Solution_Name: GitHubActions\GitHubActions.sln
