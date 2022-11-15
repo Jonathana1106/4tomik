@@ -29,23 +29,23 @@ jobs:
   Compile-Stage:
     runs-on: vs-test-work
 
-      env:
-        Solution_Name: GitHubActions\GitHubActions.sln
+    env:
+      Solution_Name: GitHubActions\GitHubActions.sln
 
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v3
-          with:
-            fetch-depth: 0
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
   Installer-Generation-SetUp-Deploy-Stage:
     runs-on: vs-test-work
 
-      env:
-        Solution_Name: GitHubActions\GitHubActions.sln
+    env:
+      Solution_Name: GitHubActions\GitHubActions.sln
 
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v3
-          with:
-            fetch-depth: 0
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
