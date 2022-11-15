@@ -26,7 +26,7 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
       
       - name: Setup denied
-        run: echo Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+        run: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
         shell: pwsh
 
       - name: Build with dotnet
