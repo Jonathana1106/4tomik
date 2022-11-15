@@ -9,43 +9,49 @@ jobs:
       - self-hosted
       - vs-test-work
 
-    env:
-      Solution_Name: GitHubActions\GitHubActions.sln
+    # env:
+    #   Solution_Name: GitHubActions\GitHubActions.sln
 
     steps:
       # - name: Dummy
       #   run:
       #     whoami
-      
       - name: Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v3
+          with:
+            dotnet-version: '6.0.x'
+      - name: Build with .NET
+        run: dotnet build --configuration Release
+        working-directory: .\GitHubActions
 
       # - name: Install .NET Core
       #   uses: actions/setup-dotnet@v3
       #   with:
       #     dotnet-version: 6.0.x
-  Compile-Stage:
-    runs-on: vs-test-work
+  # Compile-Stage:
+  #   runs-on: vs-test-work
 
-    env:
-      Solution_Name: GitHubActions\GitHubActions.sln
+  #   env:
+  #     Solution_Name: GitHubActions\GitHubActions.sln
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
 
-  Installer-Generation-SetUp-Deploy-Stage:
-    runs-on: vs-test-work
+  # Installer-Generation-SetUp-Deploy-Stage:
+  #   runs-on: vs-test-work
 
-    env:
-      Solution_Name: GitHubActions\GitHubActions.sln
+  #   env:
+  #     Solution_Name: GitHubActions\GitHubActions.sln
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
