@@ -33,7 +33,7 @@ jobs:
           
       - name: Build with .NET
         run: dotnet build --configuration Release
-        working-directory: .\GitHubActions
+        # working-directory: .\GitHubActions
 
   # Compile-Stage:
   #   runs-on: vs-test-work
