@@ -27,8 +27,7 @@ jobs:
       #   with:
       #     dotnet-version: 6.0.x
   Compile-Stage:
-    runs-on: 
-        - vs-test-work
+    runs-on: vs-test-work
 
       env:
         Solution_Name: GitHubActions\GitHubActions.sln
@@ -40,8 +39,7 @@ jobs:
             fetch-depth: 0
 
   Installer-Generation-SetUp-Deploy-Stage:
-    runs-on: 
-        - vs-test-work
+    runs-on: vs-test-work
 
       env:
         Solution_Name: GitHubActions\GitHubActions.sln
