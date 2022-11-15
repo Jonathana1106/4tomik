@@ -23,17 +23,17 @@ jobs:
         with:
           dotnet-version: '6.0.x'
 
-      - name: Set up dependency caching for faster builds
-        uses: actions/cache@v2
-        with:
-          path: ~/.nuget/packages
-          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-nuget-
+      # - name: Set up dependency caching for faster builds
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: ~/.nuget/packages
+      #     key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-nuget-
           
-      # - name: Build with .NET
-      #   run: dotnet build --configuration Release
-      #   working-directory: .\GitHubActions
+      - name: Build with .NET
+        run: dotnet build --configuration Release
+        working-directory: .\GitHubActions
 
   # Compile-Stage:
   #   runs-on: vs-test-work
