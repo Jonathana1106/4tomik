@@ -8,30 +8,23 @@ jobs:
     runs-on: 
       - self-hosted
       - vs-test-work
-
     # env:
     #   Solution_Name: GitHubActions\GitHubActions.sln
-
     steps:
-      # - name: Dummy
-      #   run:
-      #     whoami
       - name: Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '6.0.x'
-      - name: Build with .NET
-        run: dotnet build --configuration Release
-        working-directory: .\GitHubActions
+          dotnet-version: '3.1.x'
+          
+      # - name: Build with .NET
+      #   run: dotnet build --configuration Release
+      #   working-directory: .\GitHubActions
 
-      # - name: Install .NET Core
-      #   uses: actions/setup-dotnet@v3
-      #   with:
-      #     dotnet-version: 6.0.x
   # Compile-Stage:
   #   runs-on: vs-test-work
 
