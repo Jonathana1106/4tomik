@@ -1,5 +1,8 @@
 name: .NET Core Desktop
 
+env:
+      Solution_Name: GitHubActions\GitHubActions.sln
+
 on:
   [ push , pull_request ]
 
@@ -8,8 +11,7 @@ jobs:
     runs-on: 
       - self-hosted
       - vs-test-work
-    # env:
-    #   Solution_Name: GitHubActions\GitHubActions.sln
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -19,11 +21,11 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: '3.1.x'
+          dotnet-version: '6.0.x'
           
-      - name: Build with .NET
-        run: dotnet build --configuration Release
-        working-directory: .\GitHubActions
+      # - name: Build with .NET
+      #   run: dotnet build --configuration Release
+      #   working-directory: .\GitHubActions
 
   # Compile-Stage:
   #   runs-on: vs-test-work
