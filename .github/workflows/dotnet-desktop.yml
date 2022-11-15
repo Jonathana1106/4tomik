@@ -26,6 +26,7 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
       
       - name: Build with dotnet
+        run: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
         run: dotnet build --configuration Release
         working-directory: ${{env.ROOT_PATH}}
 
