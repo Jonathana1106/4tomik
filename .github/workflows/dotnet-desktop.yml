@@ -2,6 +2,8 @@ name: .NET Core Desktop
 
 env:
       Solution_Name: GitHubActions\GitHubActions.sln
+      ROOT_PATH: '.\GitHubActions'     
+      DOTNET_VERSION: '6.0.x'                    # set this to the .NET Core version to use
 
 on:
   [ push , pull_request ]
@@ -21,7 +23,11 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+      
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
+        working-directory: ${{env.ROOT_PATH}}
 
       # - name: Set up dependency caching for faster builds
       #   uses: actions/cache@v2
@@ -33,9 +39,10 @@ jobs:
           
       # - name: Build with .NET
       #   run: dotnet build --configuration Release
-        # working-directory: .\GitHubActions
-      - name: Setup MSBuild.exe
-        uses: microsoft/setup-msbuild@v1.0.2
+      #   working-directory: .\GitHubActions
+
+      # - name: Setup MSBuild.exe
+      #   uses: microsoft/setup-msbuild@v1.0.2
 
   # Compile-Stage:
   #   runs-on: vs-test-work
