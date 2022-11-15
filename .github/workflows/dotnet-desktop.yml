@@ -21,9 +21,9 @@ jobs:
         with:
           dotnet-version: '3.1.x'
           
-      # - name: Build with .NET
-      #   run: dotnet build --configuration Release
-      #   working-directory: .\GitHubActions
+      - name: Build with .NET
+        run: dotnet build --configuration Release
+        working-directory: .\GitHubActions
 
   # Compile-Stage:
   #   runs-on: vs-test-work
