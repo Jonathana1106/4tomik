@@ -1,9 +1,10 @@
 name: .NET Core Desktop
 
+# Global variables for the yml
 env:
-      Solution_Name: GitHubActions\GitHubActions.sln
-      ROOT_PATH: '.\GitHubActions'     
-      DOTNET_VERSION: '6.0.x'                    # set this to the .NET Core version to use
+      Solution_Name: GitHubActions\GitHubActions.sln  # 
+      ROOT_PATH: '.\GitHubActions'                    #
+      DOTNET_VERSION: '6.0.x'                         # set this to the .NET Core version to use
 
 on:
   [ push , pull_request ]
@@ -13,25 +14,36 @@ jobs:
     runs-on: 
       - self-hosted
       - vs-test-work
-    
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    
+    # steps:
+    #   - name: Checkout
+    #     uses: actions/checkout@v3
+    #     with:
+    #       fetch-depth: 0
 
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
+    #   - name: Setup .NET Core
+    #     uses: actions/setup-dotnet@v2
+    #     with:
+    #       dotnet-version: ${{ env.DOTNET_VERSION }}
       
-      - name: Setup denied
-        run: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-        shell: pwsh
+    #   - name: Setup denied
+    #     run: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+    #     shell: pwsh
 
-      - name: Build with dotnet
-        run: dotnet build --configuration Release
-        working-directory: ${{env.ROOT_PATH}}
+    #   - name: Build with dotnet
+    #     run: dotnet build --configuration Release
+    #     working-directory: ${{env.ROOT_PATH}}
 
       # - name: Set up dependency caching for faster builds
       #   uses: actions/cache@v2
